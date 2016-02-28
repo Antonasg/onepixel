@@ -38,12 +38,34 @@ function keysToHue(){
   avg = sum/cnt;
   mHue = avg;
 }
+
+var cLight = 0;
+var lightHouse = [10,15,20,25,30,35,40,45,50,80,90,100];
+var fastPulse = [10,30,60,80,100];
+var inReverse = false;
+function light(array) {
+    print("light")
+    if (cLight < array.length-1 && !inReverse) {
+        cLight = cLight +1;
+        mLit = array[cLight]    
+    } else {
+        inReverse = true
+        cLight = cLight -1;
+        mLit = array[cLight]
+        if (cLight == 0) {
+            inReverse = false;
+        }
+    }
+}
+var interval;
 function keyPressed() { //this is called when a key is pressed
   if (key == 'A') {
-    print("THIS FUNCITON"+key);  
-      mLit = 10;
-      //background(mHue, mSat, mLit);
-      //draw();
+    mLit = 0;
+    clearInterval(interval)
+    interval = setInterval(light,100,lightHouse)
+  } else if (key == 'S') {
+    clearInterval(interval)
+    interval = setInterval(light,100,fastPulse)
   } 
   for(var i = 0; i < numColors; i++){
     print("key "+key);
@@ -63,9 +85,18 @@ function keyReleased() { //this is called when a key is released
   return false; // prevent any default browser behavior
 }
 
+function reverse2(arr) {
+    var result = [],
+       ii = arr.length;
+   for (var i = ii - 1;i !== 0;i--) {
+       result.push(arr[i]);
+   }
+   return result;
+}
+
 function draw() {
-  calcVolToSat();
-  keysToHue();
+  //calcVolToSat();
+  //keysToHue();
   
   // vol = mic.getLevel();
   // mSat = map(vol, 0, 1, 50, 100);
