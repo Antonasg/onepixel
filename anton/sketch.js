@@ -42,7 +42,7 @@ function keysToHue(){
 var cLight = 0;
 var lightHouse = [10,15,20,25,30,35,40,45,50,80,90,100];
 var fastPulse = [10,30,60,80,100];
-var gradual = [10,80,30,100,30,60,40,20,50,30,60,70];
+var flicker = [10,80,30,100,30,60,40,20,50,30,60,70];
 var brightFlash = [80,80,80,100,80,80,80,80,80,100,80,80];
 var inReverse = false;
 
@@ -63,7 +63,7 @@ function light(array) {
 var interval;
 function keyPressed() { //this is called when a key is pressed
   if (key == 'A') {
-    mLit = 0;
+    //mLit = 0;
     clearInterval(interval)
     interval = setInterval(light,100,lightHouse)
   } else if (key == 'S') {
@@ -71,7 +71,7 @@ function keyPressed() { //this is called when a key is pressed
     interval = setInterval(light,100,fastPulse)
   } else if (key == 'D') {
     clearInterval(interval)
-    interval = setInterval(light,100,gradual)
+    interval = setInterval(light,100,flicker)
   } else if (key == 'F') {
     clearInterval(interval)
     interval = setInterval(light,100,brightFlash)
