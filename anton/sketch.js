@@ -38,7 +38,13 @@ function keysToHue(){
   avg = sum/cnt;
   mHue = avg;
 }
-function keyPressed() { //this is called when a key is pressed 
+function keyPressed() { //this is called when a key is pressed
+  if (key == 'A') {
+    print("THIS FUNCITON"+key);  
+      mLit = 10;
+      //background(mHue, mSat, mLit);
+      //draw();
+  } 
   for(var i = 0; i < numColors; i++){
     print("key "+key);
     if(key === colorKeys[i]){
