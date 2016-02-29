@@ -4,11 +4,11 @@ var mLit = 80; //lightness
 
 var numColors = 4;
 var colorVals = new Array(10, 50, 200, 275);
-var colorKeys = new Array('C', 'G', 'Z', 'O');
+var colorKeys = new Array('B', 'J', 'O', 'K');
 var colorPressed = new Array(false, false, false, false);
 
 function setup() {
-  createCanvas(600, 480);
+  createCanvas(1900, 1200);
   
   colorMode(HSB);
   
@@ -21,7 +21,7 @@ function setup() {
 
 function calcVolToSat(){
   var vol = mic.getLevel();
-  mSat = map(vol, 0, 1, 50, 100);
+  mSat = map(vol, 0, 1, 10, 100);
 }
 
 function keysToHue(){
@@ -62,14 +62,17 @@ function light(array) {
 }
 var interval;
 function keyPressed() { //this is called when a key is pressed
-  clearInterval(interval)
-  if (key == 'A') {   
+  if (key == 'Q') {   
+    clearInterval(interval)
     interval = setInterval(light,100,lightHouse)
-  } else if (key == 'S') {
+  } else if (key == 'R') {
+    clearInterval(interval)
     interval = setInterval(light,100,fastPulse)
-  } else if (key == 'D') {
+  } else if (key == 'X') {
+    clearInterval(interval)
     interval = setInterval(light,100,flicker)
-  } else if (key == 'F') {
+  } else if (key == 'M') {
+    clearInterval(interval)
     interval = setInterval(light,100,brightFlash)
   }
   for(var i = 0; i < numColors; i++){
@@ -100,8 +103,8 @@ function reverse2(arr) {
 }
 
 function draw() {
-  //calcVolToSat();
-  //keysToHue();
+  calcVolToSat();
+  keysToHue();
   
   // vol = mic.getLevel();
   // mSat = map(vol, 0, 1, 50, 100);
