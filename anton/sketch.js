@@ -62,18 +62,14 @@ function light(array) {
 }
 var interval;
 function keyPressed() { //this is called when a key is pressed
-  if (key == 'A') {
-    //mLit = 0;
-    clearInterval(interval)
+  clearInterval(interval)
+  if (key == 'A') {   
     interval = setInterval(light,100,lightHouse)
   } else if (key == 'S') {
-    clearInterval(interval)
     interval = setInterval(light,100,fastPulse)
   } else if (key == 'D') {
-    clearInterval(interval)
     interval = setInterval(light,100,flicker)
   } else if (key == 'F') {
-    clearInterval(interval)
     interval = setInterval(light,100,brightFlash)
   }
   for(var i = 0; i < numColors; i++){
